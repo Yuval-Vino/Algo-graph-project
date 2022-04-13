@@ -1,0 +1,12 @@
+﻿  AlgoEX1.cpp
+C:\Users\rotem\OneDrive\Desktop\Algo-graph-project\AlgoEX1\AlgoEX1.cpp(15,2): error C3861: 'kruskal': identifier not found
+  MinHeap.cpp
+  UnionFind.cpp
+C:\Users\rotem\OneDrive\Desktop\Algo-graph-project\AlgoEX1\UnionFind.cpp(31,10): error C2228: left of '.size' must have class/struct/union
+C:\Users\rotem\OneDrive\Desktop\Algo-graph-project\AlgoEX1\UnionFind.cpp(31,10): message : type is 'Vertex *'
+C:\Users\rotem\OneDrive\Desktop\Algo-graph-project\AlgoEX1\UnionFind.cpp(31,10): message : did you intend to use '->' instead?
+C:\Users\rotem\OneDrive\Desktop\Algo-graph-project\AlgoEX1\UnionFind.cpp(32,1): error C2059: syntax error: '}'
+  Generating Code...
+C:\Users\rotem\OneDrive\Desktop\Algo-graph-project\AlgoEX1\MinHeap.cpp(16): error C4716: 'MinHeap::getMin': must return a value
+C:\Users\rotem\OneDrive\Desktop\Algo-graph-project\AlgoEX1\MinHeap.cpp(10): error C4716: 'MinHeap::deleteMin': must return a value
+C:\Users\rotem\OneDrive\Desktop\Algo-graph-project\AlgoEX1\MinHeap.cpp(21): error C4716: 'MinHeap::parentIndex': must return a value
