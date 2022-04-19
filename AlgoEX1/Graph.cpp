@@ -4,6 +4,7 @@
 void Graph::removeEdge(int v,int u)
 {
     Array[v].removeEdge(&Array[u]);
+    Array[u].removeEdge(&Array[v]);
 }
 
 void  Graph::addEdge(int v, int u, int w)
@@ -32,9 +33,9 @@ Graph::Graph(string str)
       getline(newfile, currLine);
       vertexNumber =stoi(currLine);
       getline(newfile, currLine);
-      edgeNumber=stoi(currLine);
-      Array = new Vertex[vertexNumber];
-      for (int i = 0; i < vertexNumber; i++) {
+      edgeNumber=stoi(currLine)*2;
+      Array = new Vertex[vertexNumber+1];
+      for (int i = 0; i <= vertexNumber; i++) {
           Array[i] = Vertex(i);
       }
       for(int i=0;i<edgeNumber;i++)
@@ -52,6 +53,7 @@ void Graph::addEdgeFromString(string line)
 {
     istringstream tok(line);
     string subs;
+
     int res[3]; //index 0= vIndex 1=uIndex 2=Weight
     for (int i = 0; i < 3; i++) {
 
@@ -64,6 +66,7 @@ void Graph::addEdgeFromString(string line)
     if(res[0]==res[1]||res[0]> vertexNumber ||res[1]> vertexNumber ||res[0]<0||res[1]<0)
         throw new runtime_error("Wrong index for edge");
      addEdge(res[0],res[1],res[2]);
+     addEdge(res[1], res[0], res[2]);
 }
 
 int Graph::getVertexNumber() const {

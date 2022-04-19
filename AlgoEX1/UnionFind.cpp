@@ -1,6 +1,6 @@
 #include "UnionFind.h"
 UnionFind::UnionFind(const Graph &g) {
-	size = g.getVertexNumber();
+	size = g.getVertexNumber()+1;
 	mapArray = new MyMap[size];
 	for (int i = 0; i < size; i++)
 		makeSet(&(g.getArray()[i]));
@@ -26,12 +26,11 @@ Vertex*   UnionFind::find( Vertex* v) {
      return res;
 }
 
-void UnionFind::Union(Vertex* v, Vertex* u) {
-	Vertex* repV = find(v);
-	Vertex* repU = find(u);
-	if(mapArray[repV->index].getSize() > mapArray[repU->index].getSize())
-		mapArray[repU->index].setParent(&mapArray[repV->index]);
+void UnionFind::Union(Vertex* rep_v, Vertex* rep_u) {
+	
+	if(mapArray[rep_v->index].getSize() > mapArray[rep_u->index].getSize())
+		mapArray[rep_u->index].setParent(&mapArray[rep_v->index]);
 	else
-		mapArray[repV->index].setParent(&mapArray[repU->index]);
+		mapArray[rep_v->index].setParent(&mapArray[rep_u->index]);
 
 }

@@ -1,8 +1,9 @@
 #include "Vertex.h"
 
 void Vertex::addEdge(Vertex* v, int w) {
-
-    Edge* newEdge= new Edge(w, v);
+    
+  
+    Edge* newEdge= new Edge(w,this, v);
     newEdge->next=head;
 
     if (head != nullptr)
