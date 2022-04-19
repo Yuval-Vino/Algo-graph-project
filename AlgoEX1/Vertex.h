@@ -5,6 +5,7 @@ class Vertex
 public:
     class Edge
     {
+        
         friend class Vertex;
         Vertex* dst=nullptr;
         int w;
@@ -15,7 +16,7 @@ public:
 
     };
 
-
+    
     friend  class Edge;
     int index;
     Edge* head= nullptr;

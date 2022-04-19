@@ -6,7 +6,7 @@ class Graph
 public:
     int vertexNumber;
     Vertex* Array;
-    Graph * My_kruskal,*my_prim;
+ /*   Graph * My_kruskal,*my_prim;*/
     Graph() : vertexNumber(1) {};
     Graph(string str);//from file
     void makeEmptyGraph(int size);

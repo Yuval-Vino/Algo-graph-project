@@ -142,6 +142,7 @@
     <ClCompile Include="AlgoEX1.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="MinHeap.cpp" />
+    <ClCompile Include="MyMap.cpp" />
     <ClCompile Include="UnionFind.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Vertex.cpp" />
@@ -149,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="Graph.h" />
     <ClInclude Include="MinHeap.h" />
+    <ClInclude Include="MyMap.h" />
     <ClInclude Include="UnionFind.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Vertex.h" />

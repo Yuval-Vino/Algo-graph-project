@@ -12,5 +12,7 @@ int main()
 	Vertex* temp = g.getAdjList(2);
 	int arr[] = { 10, 20, 30, 40 };
 
+	kruskal(g);
+
 	
 }
