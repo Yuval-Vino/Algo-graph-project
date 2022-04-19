@@ -1,23 +1,12 @@
 #pragma once
 #include "Utils.h"
+#include "Edge.h"
+class Edge;
 class Vertex
 {
 public:
-    class Edge
-    {
-        
-        friend class Vertex;
-        Vertex* dst=nullptr;
-        int w;
-        Edge* next=nullptr,*prev=nullptr;
-        Edge(int w, Vertex* u) :dst(u) , w(w){};
-        Edge();
-        ~Edge() {};
-
-    };
-
-    
-    friend  class Edge;
+   
+   
     int index;
     Edge* head= nullptr;
     Vertex(int i) : index(i) {};
@@ -26,6 +15,7 @@ public:
     void removeEdge(Vertex* u);
     bool isAdjacent(Vertex* u);
     Vertex* getAdjList();
+    Edge * getEdges();
     ~Vertex();
 private:
     int countAdjs();

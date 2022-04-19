@@ -24,20 +24,20 @@ Graph::Graph(string str)
 {
     ifstream newfile;
      newfile.open(str,ios::in);  // open a file to perform write operation using file object
-   if(!newfile.is_open()) //checking whether the file is open
-    exit ;
+   if(!newfile.is_open())//checking whether the file is open
+    exit(1) ;
   
       //checking whether the file is open
       string currLine;//1 2 32  32=W,1,2=u,v
       getline(newfile, currLine);
       vertexNumber =stoi(currLine);
       getline(newfile, currLine);
-      int edge_num=stoi(currLine);
+      edgeNumber=stoi(currLine);
       Array = new Vertex[vertexNumber];
       for (int i = 0; i < vertexNumber; i++) {
           Array[i] = Vertex(i);
       }
-      for(int i=0;i<edge_num;i++)
+      for(int i=0;i<edgeNumber;i++)
       {
           (getline(newfile, currLine)); //read data from file object and put it into string
           addEdgeFromString(currLine);
@@ -66,5 +66,13 @@ void Graph::addEdgeFromString(string line)
      addEdge(res[0],res[1],res[2]);
 }
 
+int Graph::getVertexNumber() const {
+    return vertexNumber;
+}
 
-
+Vertex* Graph::getArray() const {
+    return Array;
+}
+int Graph::getEdgeNumber(){
+    return edgeNumber;
+}

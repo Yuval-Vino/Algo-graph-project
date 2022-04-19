@@ -1,12 +1,13 @@
 #pragma once
-#include "Vertex.h"
 #include "MyMap.h"
+
 class UnionFind
 {
+public:
 
-  MyMap*  mapArray;
+   MyMap*  mapArray = nullptr;
    int size;
-   UnionFind(int size);
+   UnionFind(const Graph &g);
    void makeSet(Vertex* v);
    Vertex*  find(Vertex* v);
    void  Union(Vertex* v, Vertex* u);
