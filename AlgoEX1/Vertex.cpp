@@ -85,4 +85,6 @@ Vertex::Vertex(){
     head=nullptr;
 }
 
-    
+Edge* Vertex::getEdges(){
+    return head;
+}
