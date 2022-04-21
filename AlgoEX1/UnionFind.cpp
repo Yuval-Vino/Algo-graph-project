@@ -8,29 +8,28 @@ UnionFind::UnionFind(const Graph &g) {
 };
 void UnionFind::makeSet(Vertex* v)
 {   
-
-	mapArray[v->index] = MyMap(v);
+	mapArray[v->getIndex()] = MyMap(v);
 }
 
 
 Vertex*   UnionFind::find( Vertex* v) {
 	
-    Vertex* parent = mapArray[v->index].parent;
+    Vertex* parent = mapArray[v->getIndex()].getParent();
    
 	
 	 if(v == parent)
 	   return parent;
 
      Vertex* res = find(parent);
-	 mapArray[v->index].setParent(&mapArray[res->index]);
+	 mapArray[v->getIndex()].setParent(&mapArray[res->getIndex()]);
      return res;
 }
 
 void UnionFind::Union(Vertex* rep_v, Vertex* rep_u) {
 	
-	if(mapArray[rep_v->index].getSize() > mapArray[rep_u->index].getSize())
-		mapArray[rep_u->index].setParent(&mapArray[rep_v->index]);
+	if(mapArray[rep_v->getIndex()].getSize() > mapArray[rep_u->getIndex()].getSize())
+		mapArray[rep_u->getIndex()].setParent(&mapArray[rep_v->getIndex()]);
 	else
-		mapArray[rep_v->index].setParent(&mapArray[rep_u->index]);
+		mapArray[rep_v->getIndex()].setParent(&mapArray[rep_u->getIndex()]);
 
 }

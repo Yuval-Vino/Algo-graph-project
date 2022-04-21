@@ -36,9 +36,8 @@ void Vertex::removeEdge(Vertex* V){
 
 
 Vertex::~Vertex(){
-     
+
     Edge* curr = this->head,*tmp;
-   
     while (curr)
     {
         tmp=curr->next;
@@ -87,5 +86,11 @@ Vertex::Vertex(){
 }
 
 Edge* Vertex::getEdges(){
+    return head;
+}
+int Vertex::getIndex(){
+    return index;
+}
+Edge* Vertex::getHead(){
     return head;
 }

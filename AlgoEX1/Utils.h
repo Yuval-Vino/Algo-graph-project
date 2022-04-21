@@ -4,7 +4,9 @@
 #include <sstream>
 #include <fstream>
  using namespace std;
-
+#define WHITE 1
+#define GRAY 2
+#define BLACK 3
 typedef struct pair{
 	int priority;
 	int myIndx; //my indexs in data

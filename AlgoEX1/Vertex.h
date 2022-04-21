@@ -5,10 +5,6 @@ class Edge;
 class Vertex
 {
 public:
-   
-   
-    int index;
-    Edge* head= nullptr;
     Vertex(int i) : index(i) {};
     Vertex();
     void addEdge(Vertex* u, int w);
@@ -16,7 +12,11 @@ public:
     bool isAdjacent(Vertex* u);
     Vertex* getAdjList();
     Edge * getEdges();
+    int getIndex();
+    Edge* getHead();
     ~Vertex();
-private:
     int countAdjs();
+private: 
+    int index;
+    Edge* head = nullptr;
 };

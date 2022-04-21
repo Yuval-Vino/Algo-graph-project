@@ -5,10 +5,7 @@ class Edge
 {
 public:
     friend class Vertex;
-    Vertex* dst = nullptr;
-    Vertex* src = nullptr;
-    int w;
-    
+
     Edge* next = nullptr, * prev = nullptr;
     Edge(int w, Vertex* u, Vertex* v) :src(u),dst(v), w(w) {};
     Edge(): w(0){};
@@ -16,7 +13,11 @@ public:
     Vertex* getDst(){return dst;};
     Vertex* getSrc(){return src;};
     operator int() const {return w;}
-    
-    ~Edge() {};
+    static int compare(const void* e1,const void* e2) { 	return ( ((Edge*)e1)->getWieght() - ((Edge*)e2)->getWieght());};
 
+    ~Edge() {};
+private:
+    Vertex* dst = nullptr;
+    Vertex* src = nullptr;
+    int w;
 };

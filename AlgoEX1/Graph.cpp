@@ -38,15 +38,14 @@ Graph::Graph(string str)
       for (int i = 0; i <= vertexNumber; i++) {
           Array[i] = Vertex(i);
       }
-      for(int i=0;i<edgeNumber;i++)
+      for(int i=0;i<edgeNumber/2;i++)
       {
           (getline(newfile, currLine)); //read data from file object and put it into string
           addEdgeFromString(currLine);
- 
-  
       } 
      getline(newfile, edgeToDelete);
       newfile.close(); 
+      isLinked();
    }
 
 void Graph::addEdgeFromString(string line)
@@ -58,13 +57,17 @@ void Graph::addEdgeFromString(string line)
     for (int i = 0; i < 3; i++) {
 
         tok >> subs;
-        if (!isNumber(subs))
-            throw new runtime_error("Not a number!");
+        if (!isNumber(subs)) {
+            cout<< "Not a number!";
+            exit(1);
+        }
         res[i] = stoi(subs);
     }
 
-    if(res[0]==res[1]||res[0]> vertexNumber ||res[1]> vertexNumber ||res[0]<0||res[1]<0)
-        throw new runtime_error("Wrong index for edge");
+    if (res[0] == res[1] || res[0] > vertexNumber || res[1] > vertexNumber || res[0] < 0 || res[1] < 0) {
+        cout<< "Wrong index for edge";
+        exit(1);
+    }
      addEdge(res[0],res[1],res[2]);
      addEdge(res[1], res[0], res[2]);
 }
@@ -78,4 +81,36 @@ Vertex* Graph::getArray() const {
 }
 int Graph::getEdgeNumber(){
     return edgeNumber;
+}
+Graph::~Graph() {
+
+    delete[] Array;
+}
+
+void Graph::isLinked(){
+
+	int size = getVertexNumber() + 1;
+	int* color = new int[size]; 
+	for (int i = 0; i < size; i++) 
+		color[i] = WHITE;
+	
+	visit(&(getArray()[1]), color);
+        
+	for (int i = 1; i < size; i++)
+        if (color[i] != BLACK)
+        {
+            cout << "Graph not linked!";
+            exit(1);
+        }
+}
+
+void Graph::visit(Vertex* u,int * color) {
+	color[u->getIndex()] = GRAY;
+	Vertex * v;
+	for (int i = 0; i < u->countAdjs(); i++) {
+		v =&( u->getAdjList()[i]);
+		if (color[v->getIndex()] == WHITE)
+			visit(v, color);	
+	}
+	color[u->getIndex()] = BLACK;
 }
