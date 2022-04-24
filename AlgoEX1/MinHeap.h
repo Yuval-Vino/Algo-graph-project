@@ -1,19 +1,33 @@
 //#pragma once
-#include "Vertex.h"
+
 #include "Graph.h"
 class MinHeap
 {
-    Vertex** vArray;
+    class Pair {
+         friend class MinHeap;
+        Vertex* key;
+        int value;
+        Pair() : key(NULL), value(INFINITY) {};
+        Pair(Vertex* key, int value): key(key), value(value){};
+        void decreaseKey(int newValue){value=newValue;};
+    };
+    public:
+    friend class Pair;
     int size=0;
-    
-	MinHeap(Graph g);
+private :
+    Pair* map;
+public:
+	MinHeap(Vertex* vers,int size);
+    ~MinHeap(){delete[] map;};
     Vertex* deleteMin();
-    void insert(Vertex* v);
     Vertex* getMin();
     bool isEmpty();
-    void decreaseKey();
+    void decreaseKey(Vertex* v,int newKey);
     int parentIndex(Vertex* v);
-    void fixHeap();
-
+    void fixHeap(int ind);
+    int rightChild(int ind);
+    int leftChild(int ind);
+    int nodeParent(int ind);
+    int getMinChild(int ind);
 };
 

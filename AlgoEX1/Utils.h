@@ -7,6 +7,8 @@
 #define WHITE 1
 #define GRAY 2
 #define BLACK 3
+
+ const int INF = std::numeric_limits<int>::max();
 typedef struct pair{
 	int priority;
 	int myIndx; //my indexs in data
@@ -15,3 +17,4 @@ typedef struct pair{
 }Pair;
 
 bool  isNumber(const string& str);
+void myExit();

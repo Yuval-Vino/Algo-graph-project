@@ -11,7 +11,6 @@ public:
 	int getSize();
     Vertex *getParent();
 private:
-
 	Vertex* v = NULL;
 	Vertex* parent = NULL;
 	int size = 1;

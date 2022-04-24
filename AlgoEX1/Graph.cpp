@@ -1,10 +1,26 @@
 
 #include "Graph.h"
 
-void Graph::removeEdge(int v,int u)
+void Graph::removeEdge()
 {
-    Array[v].removeEdge(&Array[u]);
-    Array[u].removeEdge(&Array[v]);
+    
+    istringstream tok(edgeToDelete);
+    string subs;
+
+    int res[2]; //index 0= vIndex 1=uIndex 2=Weight
+    for (int i = 0; i < 2; i++) {
+
+        tok >> subs;
+        if (!isNumber(subs)) 
+            myExit();
+
+        res[i] = stoi(subs);
+    }
+    edgeNumber -= 2;
+
+    
+    Array[res[0]].removeEdge(&Array[res[1]]);
+    Array[res[1]].removeEdge(&Array[res[0]]);
 }
 
 void  Graph::addEdge(int v, int u, int w)
@@ -25,19 +41,18 @@ Graph::Graph(string str)
 {
     ifstream newfile;
      newfile.open(str,ios::in);  // open a file to perform write operation using file object
-   if(!newfile.is_open())//checking whether the file is open
-    exit(1) ;
-  
-      //checking whether the file is open
+     if (!newfile.is_open())//checking whether the file is open
+         myExit();//checking whether the file is open
+      
       string currLine;//1 2 32  32=W,1,2=u,v
       getline(newfile, currLine);
       vertexNumber =stoi(currLine);
       getline(newfile, currLine);
       edgeNumber=stoi(currLine)*2;
       Array = new Vertex[vertexNumber+1];
-      for (int i = 0; i <= vertexNumber; i++) {
+      for (int i = 0; i <= vertexNumber; i++) 
           Array[i] = Vertex(i);
-      }
+      
       for(int i=0;i<edgeNumber/2;i++)
       {
           (getline(newfile, currLine)); //read data from file object and put it into string
@@ -57,17 +72,13 @@ void Graph::addEdgeFromString(string line)
     for (int i = 0; i < 3; i++) {
 
         tok >> subs;
-        if (!isNumber(subs)) {
-            cout<< "Not a number!";
-            exit(1);
-        }
+        if (!isNumber(subs)) 
+            myExit();
         res[i] = stoi(subs);
     }
 
-    if (res[0] == res[1] || res[0] > vertexNumber || res[1] > vertexNumber || res[0] < 0 || res[1] < 0) {
-        cout<< "Wrong index for edge";
-        exit(1);
-    }
+    if (res[0] == res[1] || res[0] > vertexNumber || res[1] > vertexNumber || res[0] < 0 || res[1] < 0) 
+        myExit();
      addEdge(res[0],res[1],res[2]);
      addEdge(res[1], res[0], res[2]);
 }
@@ -98,10 +109,7 @@ void Graph::isLinked(){
         
 	for (int i = 1; i < size; i++)
         if (color[i] != BLACK)
-        {
-            cout << "Graph not linked!";
-            exit(1);
-        }
+            myExit();
 }
 
 void Graph::visit(Vertex* u,int * color) {

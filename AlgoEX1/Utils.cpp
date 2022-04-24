@@ -3,3 +3,7 @@ bool isNumber(const string& str)
 {
     return str.find_first_not_of("0123456789- ") == string::npos;
 }
+void myExit() {
+    cout << "Invalid input!";
+    exit(1);
+}

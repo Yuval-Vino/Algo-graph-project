@@ -16,6 +16,8 @@ public:
     Edge* getHead();
     ~Vertex();
     int countAdjs();
+
+    int minHeapIndex;
 private: 
     int index;
     Edge* head = nullptr;

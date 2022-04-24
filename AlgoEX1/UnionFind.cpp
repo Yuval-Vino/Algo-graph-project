@@ -1,4 +1,5 @@
 #include "UnionFind.h"
+
 UnionFind::UnionFind(const Graph &g) {
 	size = g.getVertexNumber()+1;
 	mapArray = new MyMap[size];
@@ -6,11 +7,11 @@ UnionFind::UnionFind(const Graph &g) {
 		makeSet(&(g.getArray()[i]));
 
 };
+
 void UnionFind::makeSet(Vertex* v)
 {   
 	mapArray[v->getIndex()] = MyMap(v);
 }
-
 
 Vertex*   UnionFind::find( Vertex* v) {
 	

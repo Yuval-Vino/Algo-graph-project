@@ -1,7 +1,6 @@
 #include "Vertex.h"
 
 void Vertex::addEdge(Vertex* v, int w) {
-    
   
     Edge* newEdge= new Edge(w,this, v);
     newEdge->next=head;
@@ -30,8 +29,10 @@ void Vertex::removeEdge(Vertex* V){
         if (currNeigbor->next)   
             currNeigbor->next->prev = currNeigbor->prev; 
                             
-         delete currNeigbor;
+      return   delete currNeigbor;
     }
+
+    myExit();
 }
 
 

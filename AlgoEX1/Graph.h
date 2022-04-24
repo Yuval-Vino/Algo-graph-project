@@ -11,7 +11,7 @@ public:
   void addEdge(int v,int u,int w);
   bool isAdjacent(int v, int u);
   Vertex* getAdjList(int v);
-  void removeEdge(int v,int u);
+  void removeEdge();
   int getVertexNumber() const;
   Vertex* getArray() const;
   int getEdgeNumber();
