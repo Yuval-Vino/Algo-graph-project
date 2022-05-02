@@ -3,22 +3,29 @@
 
 void Graph::removeEdge()
 {
-    
+
+    while (edgeToDelete[edgeToDelete.length() - 1] == ' ')
+        edgeToDelete.pop_back();
+
     istringstream tok(edgeToDelete);
     string subs;
-
+    int countNumber = 0;
     int res[2]; //index 0= vIndex 1=uIndex 2=Weight
-    for (int i = 0; i < 2; i++) {
 
+    while (!tok.eof())
+    {
         tok >> subs;
-        if (!isNumber(subs)) 
+        if (!isNumber(subs))
             myExit();
+        res[countNumber] = stoi(subs);
+        countNumber++;
 
-        res[i] = stoi(subs);
     }
-    edgeNumber -= 2;
 
-    
+    if (res[0] < 1 || res[0] > vertexNumber || res[1] < 1 || res[1] > vertexNumber || !isAdjacent(res[0], res[1]) || countNumber != 2) //check if edge to remove is legal
+        myExit();
+ 
+    edgeNumber -= 2;
     Array[res[0]].removeEdge(&Array[res[1]]);
     Array[res[1]].removeEdge(&Array[res[0]]);
 }
@@ -58,24 +65,38 @@ Graph::Graph(string str)
           (getline(newfile, currLine)); //read data from file object and put it into string
           addEdgeFromString(currLine);
       } 
+    
      getline(newfile, edgeToDelete);
+     string s;
+     getline(newfile, s);
+     if (s.length() > 0 || !newfile.eof())
+         myExit();
       newfile.close(); 
       isLinked();
    }
 
 void Graph::addEdgeFromString(string line)
 {
+    while (line[line.length()-1]==' ')
+        line.pop_back();
+
     istringstream tok(line);
     string subs;
-
+    int countNumber = 0;
     int res[3]; //index 0= vIndex 1=uIndex 2=Weight
-    for (int i = 0; i < 3; i++) {
 
+    while (!tok.eof())
+    {
         tok >> subs;
-        if (!isNumber(subs)) 
+        if (!isNumber(subs))
             myExit();
-        res[i] = stoi(subs);
+        res[countNumber] = stoi(subs);
+        countNumber++;
+
     }
+
+    if (countNumber != 3)
+        myExit();
 
     if (res[0] == res[1] || res[0] > vertexNumber || res[1] > vertexNumber || res[0] < 0 || res[1] < 0) 
         myExit();
@@ -108,8 +129,10 @@ void Graph::isLinked(){
 	visit(&(getArray()[1]), color);
         
 	for (int i = 1; i < size; i++)
-        if (color[i] != BLACK)
-            myExit();
+        if (color[i] != BLACK) {
+            cout << "No MST" << endl;
+            exit(1);
+        }
 }
 
 void Graph::visit(Vertex* u,int * color) {
