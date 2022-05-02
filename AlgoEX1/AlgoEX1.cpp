@@ -46,7 +46,7 @@ int prim(Graph* g) {
 		while (Adj) {
 			int vIndx = Adj->getDst()->getIndex();
 			if (!InT[vIndx] && Adj->getWieght() < min[vIndx]) {//test change and to or if in tree but his wheight can be smaller
-
+				int w = Adj->getWieght();
 				min[vIndx] = Adj->getWieght();
 				Q.decreaseKey(Adj->getDst(), Adj->getWieght());	
 			}

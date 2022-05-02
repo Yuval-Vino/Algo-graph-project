@@ -74,7 +74,7 @@ int  MinHeap::getMinChild(int ind){
             return(leftChild(ind));
         return rightChild(ind);
     }
-    if (leftChild(ind) <= size)
+    if (leftChild(ind) < size)
         return leftChild(ind);
 
     return -1;//invalid no sons
