@@ -7,7 +7,6 @@ public:
 
   Graph() : vertexNumber(1) {};
   Graph(string str);//from file
-  void makeEmptyGraph(int size);
   void addEdge(int v,int u,int w);
   bool isAdjacent(int v, int u);
   Vertex* getAdjList(int v);
