@@ -1,16 +1,14 @@
-
 #include "Graph.h"
 
 void Graph::removeEdge()
 {
-
     while (edgeToDelete[edgeToDelete.length() - 1] == ' ')
         edgeToDelete.pop_back();
 
     istringstream tok(edgeToDelete);
     string subs;
     int countNumber = 0;
-    int res[2]; //index 0= vIndex 1=uIndex 2=Weight
+    int res[2]; //index 0= vIndex 1=uIndex 
 
     while (!tok.eof())
     {
@@ -35,11 +33,11 @@ void  Graph::addEdge(int v, int u, int w)
     Array[v].addEdge(&Array[u], w);
 }
 
-
 bool Graph::isAdjacent(int v, int u)
 {
     return Array[v].isAdjacent(&Array[u]);
 }
+
 Vertex* Graph::getAdjList(int v) {
     return Array[v].getAdjList();
 }
@@ -47,11 +45,11 @@ Vertex* Graph::getAdjList(int v) {
 Graph::Graph(string str)
 {
     ifstream newfile;
-     newfile.open(str,ios::in);  // open a file to perform write operation using file object
-     if (!newfile.is_open())//checking whether the file is open
-         myExit();//checking whether the file is open
+     newfile.open(str,ios::in);  
+     if (!newfile.is_open())
+         myExit();
       
-      string currLine;//1 2 32  32=W,1,2=u,v
+      string currLine;
       getline(newfile, currLine);
       vertexNumber =stoi(currLine);
       getline(newfile, currLine);
@@ -62,7 +60,7 @@ Graph::Graph(string str)
       
       for(int i=0;i<edgeNumber/2;i++)
       {
-          (getline(newfile, currLine)); //read data from file object and put it into string
+          (getline(newfile, currLine)); 
           addEdgeFromString(currLine);
       } 
     
@@ -73,7 +71,7 @@ Graph::Graph(string str)
          myExit();
       newfile.close(); 
       isLinked();
-   }
+}
 
 void Graph::addEdgeFromString(string line)
 {
@@ -115,7 +113,6 @@ int Graph::getEdgeNumber(){
     return edgeNumber;
 }
 Graph::~Graph() {
-
     delete[] Array;
 }
 

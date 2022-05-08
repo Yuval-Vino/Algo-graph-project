@@ -7,6 +7,7 @@ int kruskal(Graph *g);
 Edge* creatList(Graph *g);
 int prim(Graph* g);
 void print_output(int kruskal_1res,int kruskal_2res,int prim_res,string outputpath);
+
 int main(int* argc , char** argv )
 {
 	
@@ -37,7 +38,6 @@ int prim(Graph* g) {
 	InT[1] = true;
 	min[1] = 0;
 	 
-
 	while (!Q.isEmpty()) {
 		Vertex* u = Q.deleteMin();
 		InT[u->getIndex()] = true;
@@ -45,18 +45,16 @@ int prim(Graph* g) {
 	
 		while (Adj) {
 			int vIndx = Adj->getDst()->getIndex();
-			if (!InT[vIndx] && Adj->getWieght() < min[vIndx]) {//test change and to or if in tree but his wheight can be smaller
+			if (!InT[vIndx] && Adj->getWieght() < min[vIndx]) {
 				int w = Adj->getWieght();
 				min[vIndx] = Adj->getWieght();
 				Q.decreaseKey(Adj->getDst(), Adj->getWieght());	
 			}
 			Adj = Adj->next;
 		}
-	}
-	
+	}	
 	for (int i = 1; i < n; i++) 
 		res += min[i];
-
 
 	return res;
 }
@@ -74,16 +72,10 @@ void print_output(int kruskal_1res,int kruskal_2res,int prim_res,string outputpa
 		out_file << "Kruskal2 " << kruskal_2res << endl;
 }
 
-
-
-
-
- 
 int kruskal(Graph *g) {
 	int sum = 0, cn = 0;
 	Edge* L = creatList(g) ;
 	Edge* F = new Edge[g->getVertexNumber()];
-
 	Vertex* u_rep, *v_rep;
 
 	UnionFind UF(*g);
@@ -115,10 +107,7 @@ Edge* creatList(Graph* g) {
 			curr = curr->next;
 		}
 	}
-
-
 	qsort(list, g->getEdgeNumber(), sizeof(Edge),Edge::compare);
-
 	return list;
 } 
 

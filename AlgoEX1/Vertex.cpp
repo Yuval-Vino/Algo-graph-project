@@ -83,6 +83,7 @@ int Vertex::countAdjs() {
 }
 Vertex::Vertex(){
     index=-1;
+    minHeapIndex = -1;
     head=nullptr;
 }
 

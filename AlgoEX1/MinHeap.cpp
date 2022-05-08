@@ -45,12 +45,12 @@ bool MinHeap::isEmpty() {
 void MinHeap:: decreaseKey(Vertex* v,int newValue){
     map[v->minHeapIndex].decreaseKey(newValue);
    int curr=v->minHeapIndex;
-    while(curr>1&& map[curr].value<map[nodeParent(curr)].value)
+    while(curr>1&& map[curr].value<map[parent(curr)].value)
     {
-        swap(map[curr], map[nodeParent(curr)]);
+        swap(map[curr], map[parent(curr)]);
         map[curr].key->minHeapIndex = curr;
-        map[nodeParent(curr)].key->minHeapIndex = nodeParent(curr);
-        curr=nodeParent(curr);
+        map[parent(curr)].key->minHeapIndex = parent(curr);
+        curr=parent(curr);
     }
 }
 
@@ -63,7 +63,7 @@ int  MinHeap::rightChild(int ind){
 int  MinHeap::leftChild(int ind){
     return 2 * ind ;
 };
-int  MinHeap::nodeParent(int ind) {
+int  MinHeap::parent(int ind) {
     return ind  / 2;
 };
 
