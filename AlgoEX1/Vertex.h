@@ -5,7 +5,7 @@ class Edge;
 class Vertex
 {
 public:
-    Vertex(int i) : index(i) {};
+    Vertex(int i) : index(i), minHeapIndex(i){};
     Vertex();
     void addEdge(Vertex* u, int w);
     void removeEdge(Vertex* u);
@@ -16,7 +16,6 @@ public:
     Edge* getHead();
     ~Vertex();
     int countAdjs();
-
     int minHeapIndex;
 private: 
     int index;

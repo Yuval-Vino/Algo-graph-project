@@ -5,7 +5,7 @@ class Graph
 {
 public:
 
-  Graph() : vertexNumber(1) {};
+  Graph() : vertexNumber(1), edgeNumber(1) {};
   Graph(string str);//from file
   void addEdge(int v,int u,int w);
   bool isAdjacent(int v, int u);
